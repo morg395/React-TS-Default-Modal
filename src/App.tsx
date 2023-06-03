@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Overlay from "./components/Overlay/Overlay";
+import Modal from "./components/Modal/Modal";
+import Button from "./components/Button/Button";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    function openModalHandler() {
+        setIsModalOpen(true);
+    };
+
+    function closeModalHandler() {
+        setIsModalOpen(false);
+    };
+
+    return (
+        <>
+            <h1 className="app-title">Default modal created with React and Typescript</h1>
+            <Button onClick={openModalHandler}>Open modal</Button>
+            {isModalOpen && (
+                <Overlay>
+                    <Modal onCloseModal={closeModalHandler} />
+                </Overlay>
+            )}
+        </>
+    );
 }
 
 export default App;
