@@ -19,9 +19,10 @@ function App() {
             <h1 className="app-title">Default modal created with React and Typescript</h1>
             <Button onClick={openModalHandler}>Open modal</Button>
             {isModalOpen && (
-                <Overlay>
+                <>
+                    <Overlay onCloseModal={closeModalHandler}></Overlay>
                     <Modal onCloseModal={closeModalHandler} />
-                </Overlay>
+                </>
             )}
         </>
     );
